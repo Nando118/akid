@@ -5,6 +5,7 @@ export default {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+    safelist: ["alert-success", "alert-error", "alert-info", "alert-warning"],
     theme: {
         extend: {},
     },

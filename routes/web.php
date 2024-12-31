@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\user\auth\AuthController;
+use App\Http\Controllers\user\home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.home.home');
+// Routes accessible by both guests and authenticated users
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+// Guest middleware
+Route::middleware(['guest'])->group(function () {
+    // Sign in route
+    Route::post('/sign-in', [AuthController::class, 'loginPost'])
+        ->name('login.post')
+        ->middleware('throttle:3,1');
+
+    // Sign up route with rate limiting
+    Route::post('/sign-up', [AuthController::class, 'registerPost'])
+        ->name('register.post')
+        ->middleware('throttle:3,1');
+});
+
+// Auth middleware
+Route::middleware(['auth'])->group(function () {
+    // Sign out route
+    Route::get('/sign-out', [AuthController::class, 'logout'])->name('logout');
 });

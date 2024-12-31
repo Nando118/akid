@@ -11,11 +11,16 @@
 <body>
     {{-- Navbar --}}
         <x-user.navbar.navbar-component />
+        <x-user.search.modal-search-component />
     {{-- Navbar --}}
 
     {{-- Modal Sign In --}}
         <x-user.auth.signin.modal-sign-in-component />
     {{-- Modal Sign In --}}
+
+    {{-- Modal Forget Password --}}
+        <x-user.auth.forget_password.modal-forget-password-component />
+    {{-- Modal Forget Password --}}
 
     {{-- Modal Sign Up --}}
         <x-user.auth.signup.modal-sign-up-component />
@@ -23,6 +28,13 @@
 
     {{-- Content --}}
     <div class="container mt-3">
+
+        {{-- Alert --}}
+        @if (session('alert'))
+            <x-user.alert.alert-component :type="session('alert.type')" :message="session('alert.message')" />
+        @endif
+        {{-- Alert --}}
+            
         @yield('content')
     </div>
     {{-- Content --}}

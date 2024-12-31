@@ -11,3 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("theme", theme);
     });
 });
+
+// Auto close alert
+function autoCloseAlert() {
+    setTimeout(function () {
+        var alert = document.querySelector(".alert");
+        if (alert) {
+            alert.style.display = "none";
+        }
+    }, 5000); // Auto-close after 5 seconds
+}
+
+document.addEventListener("DOMContentLoaded", autoCloseAlert);

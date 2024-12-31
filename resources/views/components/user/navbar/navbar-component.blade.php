@@ -21,15 +21,8 @@
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                     <li><a href="#"><i class="fas fa-gavel"></i>Peraturan</a></li>
                     <li><a href="#"><i class="fas fa-star"></i>VIP</a></li>
-                    <li>
-                        <details>
-                            <summary><i class="fas fa-info"></i>Informasi</summary>
-                            <ul class="p-2">
-                                <li><a href="#"><i class="fab fa-discord"></i>Discord</a></li>
-                                <li><a href="#"><i class="fas fa-users-slash"></i>Scammers</a></li>
-                            </ul>
-                        </details>
-                    </li>
+                    <li><a href="#"><i class="fab fa-discord"></i>Discord</a></li>
+                    <li><a href="#"><i class="fas fa-users-slash"></i>Scammers</a></li>
                 </ul>
             </div>
         </div>
@@ -37,7 +30,7 @@
             <a class="btn btn-ghost text-xl">AKID</a>
         </div>
         <div class="navbar-end">
-            <button class="btn btn-ghost btn-circle">
+            <button class="btn btn-ghost btn-circle" onclick="modal_search.showModal()">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5"
@@ -89,7 +82,7 @@
                             </a>
                         </li>
                         <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li><a href="{{ route('logout') }}">Logout</a></li>
                     </ul>
                 </div>
             @else
